@@ -1,0 +1,122 @@
+/* Βοηθάει στον πιο προβλέψιμο υπολογισμό διαστάσεων. */
+* {
+  box-sizing: border-box;
+}
+
+/* Το βασικό κουτί του καλαθιού. */
+.receipt {
+  max-width: auto;
+  margin: 40px 20px;
+  padding: 24px;
+  background: #f5f5f5;
+  border: 2px dashed #999;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Πάνω μέρος του καλαθιού με τον τίτλο. */
+.receipt-header {
+  text-align: left;
+  border-bottom: 2px dashed #bbb;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+/* Στυλ για τον τίτλο Cart. */
+.receipt-header h1 {
+  margin: 0;
+  font-family: fantasy;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Μέγεθος και θέση για το εικονίδιο καλαθιού. */
+#cart-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Λίστα προϊόντων χωρίς default bullets. */
+.receipt-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Κάθε γραμμή προϊόντος μέσα στο καλάθι. */
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+/* Το αριστερό μέρος που έχει όνομα και ποσότητα. */
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Στυλ για το όνομα προϊόντος. */
+.item-name {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Στυλ για την ποσότητα. */
+.item-qty {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Το δεξί μέρος που έχει τιμή και κουμπί διαγραφής. */
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Στυλ για την τιμή προϊόντος. */
+.item-price {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Κουμπί αφαίρεσης χωρίς default browser styles. */
+.remove-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Μέγεθος για το εικονίδιο διαγραφής. */
+.delete-btn {
+  width: 16px;
+  height: 16px;
+}
+
+/* Γραμμή που δείχνει το συνολικό κόστος του καλαθιού. */
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 2px solid #222;
+  font-size: 1.1rem;
+}
+
+/* Μήνυμα που εμφανίζεται όταν δεν υπάρχουν προϊόντα στο καλάθι. */
+.empty-cart {
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px 0;
+  color: #666;
+}

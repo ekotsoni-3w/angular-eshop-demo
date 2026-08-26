@@ -1,0 +1,21 @@
+<!-- Το nav περιέχει τα βασικά links πλοήγησης της εφαρμογής. -->
+<nav>
+  <!-- Με το routerLink πηγαίνουμε στο route της αρχικής σελίδας χωρίς full page refresh. -->
+  <a routerLink="/">Home</a>
+  <!-- Αυτό το link πηγαίνει στη σελίδα προϊόντων. -->
+  <a routerLink="/products">Products</a>
+  <!-- Αυτό το link πηγαίνει στο καλάθι και δείχνει και badge με το πλήθος των προϊόντων. -->
+  <a routerLink="/cart" class="cart-link">
+    Cart 
+    <!-- Το @if εμφανίζει περιεχόμενο μόνο όταν η συνθήκη είναι true. -->
+    @if (getCartCount()>0;) {
+      <!-- Εμφανίζει πόσα τεμάχια υπάρχουν αυτή τη στιγμή στο καλάθι. -->
+      <span class="cart-badge">{{ getCartCount() }}</span>
+    }
+  </a>
+</nav>
+
+<hr>
+
+<!-- Το router-outlet είναι η "θέση" όπου φορτώνει το component του ενεργού route. -->
+<router-outlet></router-outlet>

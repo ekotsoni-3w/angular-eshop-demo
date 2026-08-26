@@ -1,0 +1,45 @@
+<!-- Το βασικό κουτί που εμφανίζει το καλάθι σαν "απόδειξη". -->
+<div class="receipt">
+  <div class="receipt-header">
+    <h1>
+      <!-- Εικονίδιο καλαθιού από τον φάκελο assets. -->
+      <img src="assets/images/shopping-cart.png" alt="cart icon" id="cart-icon" />
+      Cart
+    </h1>
+  </div>
+
+  <!-- Αν υπάρχουν προϊόντα, εμφανίζουμε τη λίστα του καλαθιού. -->
+  @if (cartItems.length > 0) {
+    <ul class="receipt-items">
+      <!-- Το @for επαναλαμβάνει μια γραμμή για κάθε item του καλαθιού. -->
+      @for (item of cartItems; let i = $index; track item.id) {
+        <li class="receipt-row">
+          <div class="item-info">
+            <!-- Όνομα προϊόντος. -->
+            <span class="item-name">{{ item.name }}</span>
+            <!-- Ποσότητα του προϊόντος στο καλάθι. -->
+            <span class="item-qty">x{{ item.quantity }}</span>
+          </div>
+
+          <div class="item-actions">
+            <!-- Συνολική τιμή για αυτό το προϊόν: τιμή x ποσότητα. -->
+            <span class="item-price">{{ item.price * item.quantity }} €</span>
+            <!-- Όταν πατηθεί το κουμπί, αφαιρεί το item στη θέση i. -->
+            <button (click)="removeItem(i)" class="remove-btn">
+              <img src="assets/images/delete.png" alt="delete" class="delete-btn" />
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <!-- Εμφανίζει το τελικό σύνολο όλων των προϊόντων. -->
+    <div class="receipt-total">
+      <span>Σύνολο</span>
+      <strong>{{ totalPrice }} €</strong>
+    </div>
+  } @else {
+    <!-- Αν το καλάθι είναι άδειο, εμφανίζει αυτό το μήνυμα. -->
+    <p class="empty-cart">Το καλάθι σου είναι άδειο.</p>
+  }
+</div>

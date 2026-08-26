@@ -1,0 +1,108 @@
+/* Βοηθάει να μετράνε σωστά τα πλάτη των στοιχείων μαζί με padding και border. */
+* {
+    box-sizing: border-box;
+}
+
+/* Η βασική κάρτα που περιέχει όλο το περιεχόμενο του product details. */
+.product-details-card {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    border: 4px solid rgb(129, 157, 202);
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Στυλ για την εικόνα του προϊόντος. */
+.product-image img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Στυλ για τον τίτλο του προϊόντος. */
+.product-info h1 {
+    font-family: fantasy;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 2rem;
+    color: #1f2d3d;
+}
+
+/* Στυλ για την τιμή του προϊόντος. */
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2a5db0;
+    margin-bottom: 20px;
+}
+
+/* Στυλ για το κείμενο περιγραφής. */
+.description {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Στυλ για το κουμπί προσθήκης στο καλάθι. */
+.add-button {
+    border: none;
+    background-color: rgb(129, 157, 202);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect στο κουμπί. */
+.add-button:hover {
+    background-color: rgb(90, 120, 170);
+    transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  /* Σε tablet η κάρτα γίνεται μονή στήλη αντί για 2 στήλες. */
+  .product-details-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .product-info h1 {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    text-align: left;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  /* Σε κινητό μικραίνουν τα κενά και τα μεγέθη για καλύτερη εφαρμογή στην οθόνη. */
+  .product-details-card {
+    margin: 20px;
+    padding: 20px;
+    gap: 25px;
+  }
+
+  .product-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .price {
+    font-size: 1.3rem;
+  }
+}

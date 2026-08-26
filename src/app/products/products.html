@@ -1,0 +1,19 @@
+<!-- Τίτλος της σελίδας προϊόντων. -->
+<h1>Products</h1>
+
+<ul>
+  <!-- Το @for επαναλαμβάνει το li για κάθε προϊόν της λίστας products. -->
+  @for (product of products; track product.id) {
+    <li class="card-product">
+      <!-- Property binding: το [src] παίρνει την τιμή από το πεδίο image του προϊόντος. -->
+      <img [src]="product.image" alt="{{product.name}}">
+      <!-- Interpolation: εμφανίζει δυναμικά το όνομα και την τιμή. -->
+      <p>{{ product.name }} - {{ product.price }} €</p>
+      <!-- Το routerLink δημιουργεί link προς το route /products/:id. -->
+      <a [routerLink]="['/products', product.id]">Details</a>
+      <br>
+      <!-- Event binding: όταν γίνει click, καλείται η addToCart(product). -->
+      <button (click)="addToCart(product)" class="add-product">Προσθήκη στο καλάθι</button>
+    </li>
+  }
+</ul>

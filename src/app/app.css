@@ -1,0 +1,43 @@
+/* Στυλ για τη μπάρα πλοήγησης. */
+nav {
+ display: flex;
+ gap: 20px;
+ align-items: center;
+ padding: 16px 24px;
+ background-color: #f5f5f5;
+}
+
+/* Στυλ για όλα τα links μέσα στο nav. */
+nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+}
+
+/* Αλλάζει χρώμα όταν περνάει ο δείκτης πάνω από το link. */
+nav a:hover {
+  color: crimson;
+}
+
+/* Κάνει το link του καλαθιού να στοιχίζει σωστά το κείμενο και το badge. */
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Το κόκκινο badge που δείχνει την ποσότητα προϊόντων στο καλάθι. */
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background-color: crimson;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}

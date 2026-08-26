@@ -1,0 +1,30 @@
+<!-- Αν βρέθηκε προϊόν με το id του URL, εμφανίζουμε την κάρτα details. -->
+@if (selectedProduct) {
+  <section class="product-details-card">
+    <div class="product-image">
+      <!-- Προβάλλει τη φωτογραφία του επιλεγμένου προϊόντος. -->
+      <img [src]="selectedProduct.image" [alt]="selectedProduct.name">
+    </div>
+
+    <div class="product-info">
+      <!-- Δυναμική εμφάνιση του ονόματος του προϊόντος. -->
+      <h1>{{ selectedProduct.name }}</h1>
+
+      <!-- Εμφανίζει την τιμή του προϊόντος. -->
+      <p class="price">{{ selectedProduct.price }} €</p>
+
+      <p class="description">
+        <!-- Εμφανίζει την περιγραφή του προϊόντος. -->
+        {{ selectedProduct.description }}
+      </p>
+
+      <!-- Όταν γίνει click, προσθέτει το συγκεκριμένο προϊόν στο καλάθι. -->
+      <button (click)="addToCart()" class="add-button">
+        Προσθήκη στο καλάθι
+      </button>
+    </div>
+  </section>
+} @else {
+  <!-- Αν δεν βρεθεί προϊόν για αυτό το id, εμφανίζεται μήνυμα λάθους. -->
+  <p>Product not found.</p>
+}

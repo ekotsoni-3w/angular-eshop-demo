@@ -1,0 +1,55 @@
+/* Στυλ για τον βασικό τίτλο της αρχικής. */
+h1 {
+    /* Το flex βοηθάει στη διάταξη του περιεχομένου. */
+    display: flex;
+    /* absolute σημαίνει ότι ο τίτλος τοποθετείται σε συγκεκριμένο σημείο της σελίδας. */
+    position: absolute;
+    /* Μετακινεί τον τίτλο μισό πλάτος αριστερά ώστε να κεντραριστεί καλύτερα. */
+    transform: translateX(-50%);
+    /* Το left: 50% βάζει την αριστερή πλευρά του στοιχείου στο κέντρο της οθόνης. */
+    left: 50%;
+    /* Δίνει μεγάλο πάνω/κάτω περιθώριο για να πέσει ο τίτλος πάνω στην εικόνα. */
+    margin: 45% auto; 
+    /* Ορίζει την οικογένεια γραμματοσειράς. */
+    font-family:fantasy;
+    /* Το vw κάνει το μέγεθος responsive ανάλογα με το πλάτος της οθόνης. */
+    font-size: 6vw;
+}
+
+/* Στυλ για την κεντρική εικόνα της αρχικής. */
+img {
+    /* relative επιτρέπει μικρές μετατοπίσεις σε σχέση με την κανονική θέση του στοιχείου. */
+    position: relative;
+    /* Η εικόνα δεν ξεπερνά ποτέ το πλάτος του γονέα της. */
+    max-width: 100%;
+    /* Ορίζει σχετικό ύψος. */
+    height:50%;
+    /* Στρογγυλεύει τις γωνίες της εικόνας. */
+    border-radius: 12px;
+    /* Βάζει την εικόνα σε πιο πίσω layer από άλλα στοιχεία. */
+    z-index: -10; /*Πάει πίσω layer*/
+}
+
+/* Κουτί περιγραφής κάτω από την κεντρική εικόνα. */
+#home-description {
+    margin: 25px 50px 75px 50px;
+    text-align: justify;
+    padding: 25px 50px;
+    border: 3px solid #b3b3cc;
+    background-color: #b3b3cc;
+    box-shadow: 39px 23px 8px 2px rgba(179, 179, 204, 0.51);
+    border-radius: 12px;
+    color: white;
+}
+
+/* Κοινό στυλ για τα επεξηγηματικά blocks της σελίδας. */
+.explain-page {
+    margin: 25px 50px 75px 50px;
+    padding: 25px 50px;
+    text-align: justify;
+    border: 3px solid #ff8080;
+    background-color: #ff8080;
+    box-shadow: 39px 23px 8px 2px rgba(255, 128, 128, 0.51);
+    border-radius: 12px;
+    color: white;
+}

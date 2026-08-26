@@ -1,0 +1,75 @@
+/* Το box-sizing: border-box βοηθάει ώστε padding και border να υπολογίζονται μέσα στο συνολικό πλάτος. */
+* {
+  box-sizing: border-box;
+}
+
+/* Στυλ για τον τίτλο της σελίδας. */
+h1 {
+    font-family: fantasy;
+    margin: 20px;
+}
+
+/* Το ul γίνεται grid ώστε τα προϊόντα να εμφανίζονται σαν cards. */
+ul {
+    list-style-type: none;
+    padding: 0;
+    /*margin: 30px 0;*/
+    display: grid; 
+    /* Δημιουργεί responsive στήλες που προσαρμόζονται στον διαθέσιμο χώρο. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Κάρτα κάθε προϊόντος. */
+.card-product {
+    margin: 20px auto;
+    padding: 20px;
+    border: 5px solid rgb(129,157,202);
+    box-shadow: -12px -11px 4px -3px rgba(129, 157, 202, 0.78);
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+/* Εικόνα προϊόντος μέσα στην κάρτα. */
+.card-product img {
+    width: 100%;
+    max-width: 220px;
+    height: 180px;
+    /* Κάνει την εικόνα να γεμίσει το πλαίσιο με βάση τις διαστάσεις που ορίσαμε. */
+    object-fit:fill;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Μικρή κίνηση zoom όταν περνάει ο δείκτης πάνω από την εικόνα. */
+.card-product img:hover {
+    transform: scale(1.08);
+}
+
+/* Στυλ για το link των details. */
+.card-product a {
+  display: inline-block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: #2a5db0;
+  font-weight: bold;
+}
+
+/* Στυλ για το κουμπί προσθήκης στο καλάθι. */
+.add-product {
+    display: inline-block;
+    border: none;
+    background-color: rgb(129, 157, 202);
+    padding: 10px 14px;
+    box-shadow: -8px -8px 4px -2px rgba(129, 157, 202, 0.78);
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+/* Hover effect για το κουμπί. */
+.add-product:hover {
+    transform: scale(1.08);
+}
