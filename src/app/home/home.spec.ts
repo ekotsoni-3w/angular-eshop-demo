@@ -1,5 +1,6 @@
 // Εργαλεία για unit tests Angular components.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 // Το component που θέλουμε να δοκιμάσουμε.
 import { HomeComponent } from './home';
 
@@ -13,6 +14,7 @@ describe('HomeComponent', () => {
     // Δημιουργεί ένα testing module και κάνει import το standalone component.
     await TestBed.configureTestingModule({
       imports: [HomeComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     // Δημιουργεί το component μέσα στο test περιβάλλον.

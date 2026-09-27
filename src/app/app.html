@@ -1,21 +1,26 @@
-<!-- Το nav περιέχει τα βασικά links πλοήγησης της εφαρμογής. -->
-<nav>
-  <!-- Με το routerLink πηγαίνουμε στο route της αρχικής σελίδας χωρίς full page refresh. -->
-  <a routerLink="/">Home</a>
-  <!-- Αυτό το link πηγαίνει στη σελίδα προϊόντων. -->
-  <a routerLink="/products">Products</a>
-  <!-- Αυτό το link πηγαίνει στο καλάθι και δείχνει και badge με το πλήθος των προϊόντων. -->
-  <a routerLink="/cart" class="cart-link">
-    Cart 
-    <!-- Το @if εμφανίζει περιεχόμενο μόνο όταν η συνθήκη είναι true. -->
-    @if (getCartCount()>0;) {
-      <!-- Εμφανίζει πόσα τεμάχια υπάρχουν αυτή τη στιγμή στο καλάθι. -->
-      <span class="cart-badge">{{ getCartCount() }}</span>
-    }
-  </a>
-</nav>
-
-<hr>
-
-<!-- Το router-outlet είναι η "θέση" όπου φορτώνει το component του ενεργού route. -->
-<router-outlet></router-outlet>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner page-width">
+    <a routerLink="/" class="brand" aria-label="eShop home">
+      <span class="brand-mark" aria-hidden="true">e.</span>
+      <span>eShop<span class="brand-dot">.</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Home</a>
+      <a routerLink="/products" routerLinkActive="active" ariaCurrentWhenActive="page">Products</a>
+    </nav>
+    <a routerLink="/cart" routerLinkActive="active" ariaCurrentWhenActive="page" class="cart-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+      <span>Cart</span>
+      <span class="cart-badge" aria-live="polite" aria-atomic="true"><span class="sr-only">Items in cart: </span>{{ getCartCount() }}</span>
+    </a>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+  <router-outlet></router-outlet>
+</main>
+<footer class="site-footer page-width">
+  <span class="footer-brand">eShop.</span>
+  <p>An Angular demo. No real orders or payments.</p>
+  <span>© 2026 Eleftheria Kotsoni</span>
+</footer>

@@ -1,14 +1,15 @@
 // Οι τύποι αυτοί χρησιμοποιούνται για ρυθμίσεις routes που αφορούν τον server.
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import { PRODUCTS } from './product-data';
 
 // Εδώ ορίζονται routes για το server-side rendering.
 export const serverRoutes: ServerRoute[] = [
   {
-    // Δημιουργούμε εκ των προτέρων τις τρεις δυναμικές σελίδες προϊόντων.
+    // Prerender every product in the shared catalogue.
     path: 'products/:id',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      return [{ id: '1' }, { id: '2' }, { id: '3' }];
+      return PRODUCTS.map(product => ({ id: String(product.id) }));
     },
   },
   {

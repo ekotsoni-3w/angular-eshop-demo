@@ -1,7 +1,7 @@
 // Δηλώνει Angular component.
 import { Component } from '@angular/core';
 // Φέρνουμε το service του καλαθιού για να διαβάζουμε και να αλλάζουμε τα δεδομένα του.
-import { CartService } from '../cart';
+import { CartItem, CartService } from '../cart';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { CartService } from '../cart';
 
 export class CartComponent {
   // Θα κρατάει τα προϊόντα που υπάρχουν στο καλάθι.
-  cartItems: any[] = [];
+  cartItems: readonly CartItem[] = [];
   // Θα κρατάει το συνολικό κόστος όλων των προϊόντων.
   totalPrice = 0;
 
@@ -24,6 +24,13 @@ export class CartComponent {
       this.cartItems = this.cartService.getItems();
       // υπολογισμός συνόλου όταν φορτώνει το component
       this.calculateTotal();
+  }
+
+  readonly maxQuantity = Number.MAX_SAFE_INTEGER;
+
+  changeQuantity(productId: number, change: -1 | 1) {
+    this.cartService.changeQuantity(productId, change);
+    this.calculateTotal();
   }
 
   // Αφαιρεί ένα προϊόν με βάση τη θέση του μέσα στον πίνακα.

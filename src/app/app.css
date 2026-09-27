@@ -1,43 +1,27 @@
-/* Στυλ για τη μπάρα πλοήγησης. */
-nav {
- display: flex;
- gap: 20px;
- align-items: center;
- padding: 16px 24px;
- background-color: #f5f5f5;
-}
-
-/* Στυλ για όλα τα links μέσα στο nav. */
-nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 600;
-  font-family: Arial, sans-serif;
-}
-
-/* Αλλάζει χρώμα όταν περνάει ο δείκτης πάνω από το link. */
-nav a:hover {
-  color: crimson;
-}
-
-/* Κάνει το link του καλαθιού να στοιχίζει σωστά το κείμενο και το badge. */
-.cart-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Το κόκκινο badge που δείχνει την ποσότητα προϊόντων στο καλάθι. */
-.cart-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 6px;
-  border-radius: 999px;
-  background-color: crimson;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
+:host { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+.site-header { background: #fff; border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 92px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.65rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; background: var(--accent); color: white; border-radius: 10px; font-size: 1.5rem; }
+.brand-dot { color: var(--accent); }
+nav { display: flex; align-self: stretch; gap: 36px; }
+nav a { display: flex; align-items: center; border-bottom: 2px solid transparent; color: var(--muted); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.cart-link { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+.cart-link:hover, .cart-link.active { background: #eaf1e8; border-color: var(--accent); }
+.cart-badge { display: grid; place-items: center; min-width: 24px; height: 24px; padding-inline: 5px; border-radius: 50%; background: var(--accent); color: white; font-size: 0.7rem; }
+main { flex: 1; min-width: 0; }
+.site-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 64px; padding-block: 28px; border-top: 1px solid var(--line); font-size: 0.75rem; color: var(--muted); }
+.site-footer p { margin: 0; }
+.footer-brand { color: var(--ink); font-size: 1.15rem; font-weight: 800; }
+.skip-link { position: absolute; top: -100px; left: 16px; padding: 12px; background: white; z-index: 10; }
+.skip-link:focus { top: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 600px) {
+  .header-inner { flex-wrap: wrap; gap: 0; padding-top: 16px; }
+  .brand { font-size: 1.4rem; }
+  nav { order: 3; width: 100%; justify-content: center; gap: 12px; margin-top: 8px; }
+  nav a { flex: 1; justify-content: center; min-height: 48px; }
+  .cart-link { min-height: 48px; }
+  .site-footer { line-height: 1.7; align-items: flex-start; flex-direction: column; margin-top: 40px; }
 }

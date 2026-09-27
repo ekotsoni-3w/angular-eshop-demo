@@ -1,22 +1,27 @@
-<!-- Το container κρατά μαζί τον τίτλο και την κεντρική εικόνα της αρχικής σελίδας. -->
-<div id="container">
-    <!-- Το <br> σπάει τη γραμμή ώστε ο τίτλος να εμφανίζεται σε δύο σειρές. -->
-    <h1>Welcome to <br> my eShop</h1>
-    <!-- Το src δείχνει σε αρχείο μέσα στο src/assets, το οποίο σερβίρεται σαν /assets στον browser. -->
-    <img src="assets/images/online-shopping-store-order-concept.jpg" alt="Home image"/>
-</div>
-<!-- Αυτή η ενότητα δίνει μια σύντομη περιγραφή του e-shop. -->
-<div id="home-description">
-    <p>Ανακαλύψτε τις κορυφαίες συσκευές της αγοράς σε ένα σύγχρονο περιβάλλον πλοήγησης. Μια ολοκληρωμένη εμπειρία αγορών χτισμένη με τις πιο προηγμένες τεχνολογίες web.</p>
-</div>
-
-<!-- Επεξηγεί ότι η εφαρμογή είναι demo και όχι πραγματικό κατάστημα. -->
-<div class="explain-page">
-    <p>Αυτό το e-shop δεν είναι ένα πραγματικό κατάστημα, αλλά μια Demo Εφαρμογή που δημιουργήθηκε για την επίδειξη των δυνατοτήτων της Angular.</p>
-</div>
-
-<!-- Μικρό footer-like τμήμα με στοιχεία δημιουργού. -->
-<div class="explain-page">
-    <p>Δημιουργός: <i>Ελευθερία Κοτσώνη</i></p>
-    <p>Έτος δημιουργίας: <i>2026</i></p>
+<div class="page-width">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Everyday tech, thoughtfully chosen</p>
+      <h1 id="hero-title">A better setup.<br><span>A better day.</span></h1>
+      <p class="hero-description">Make room for what matters. Discover laptops and desk essentials for work, study and everything in between.</p>
+      <a routerLink="/products" class="button-primary">Explore products <span aria-hidden="true">↗</span></a>
+      <div class="hero-note"><span class="note-line" aria-hidden="true"></span> Simple essentials. Everyday possibilities.</div>
+    </div>
+    <div class="hero-visual">
+      <span class="visual-label">THE EVERYDAY EDIT / 01</span>
+      <img src="assets/images/laptop.jpg" alt="Laptop with a detachable keyboard and colorful display" width="1200" height="675" fetchpriority="high">
+      <a routerLink="/products/1" class="featured-product">
+        <span><small>Meet your next essential</small><strong>Laptop <span>€900</span></strong></span>
+        <span class="feature-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+  <section class="essentials" aria-labelledby="essentials-title">
+    <div class="section-intro"><p class="eyebrow">Less clutter. More possibility.</p><h2 id="essentials-title">Your everyday essentials.</h2></div>
+    <div class="essential-links">
+      <a routerLink="/products/1"><span class="category-number">01</span><span><strong>Work & study</strong><small>Find your everyday laptop</small></span><span aria-hidden="true">↗</span></a>
+      <a routerLink="/products/2"><span class="category-number">02</span><span><strong>Point & click</strong><small>A comfortable mouse for your desk</small></span><span aria-hidden="true">↗</span></a>
+      <a routerLink="/products/3"><span class="category-number">03</span><span><strong>Make every keystroke count</strong><small>Complete your setup with a keyboard</small></span><span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
 </div>

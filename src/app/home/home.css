@@ -1,55 +1,52 @@
-/* Στυλ για τον βασικό τίτλο της αρχικής. */
-h1 {
-    /* Το flex βοηθάει στη διάταξη του περιεχομένου. */
-    display: flex;
-    /* absolute σημαίνει ότι ο τίτλος τοποθετείται σε συγκεκριμένο σημείο της σελίδας. */
-    position: absolute;
-    /* Μετακινεί τον τίτλο μισό πλάτος αριστερά ώστε να κεντραριστεί καλύτερα. */
-    transform: translateX(-50%);
-    /* Το left: 50% βάζει την αριστερή πλευρά του στοιχείου στο κέντρο της οθόνης. */
-    left: 50%;
-    /* Δίνει μεγάλο πάνω/κάτω περιθώριο για να πέσει ο τίτλος πάνω στην εικόνα. */
-    margin: 45% auto; 
-    /* Ορίζει την οικογένεια γραμματοσειράς. */
-    font-family:fantasy;
-    /* Το vw κάνει το μέγεθος responsive ανάλογα με το πλάτος της οθόνης. */
-    font-size: 6vw;
+.hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding-block: 64px; }
+.hero-copy { padding-block: 16px; }
+h1 { margin: 0; font-size: clamp(2.7rem, 4.7vw, 4.4rem); line-height: 1.08; letter-spacing: -0.055em; font-weight: 700; }
+h1 span { color: var(--accent); }
+.hero-description { max-width: 430px; margin: 24px 0 30px; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.hero-note { display: flex; align-items: center; gap: 10px; margin-top: 32px; color: var(--muted); font-size: 0.75rem; }
+.note-line { width: 24px; height: 1px; background: var(--accent); }
+.hero-visual { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; min-height: 450px; padding: 28px; border-radius: 16px; background: #e9eee4; }
+.visual-label { font-size: 0.65rem; letter-spacing: 0.17em; color: #4b6255; }
+.hero-visual img { width: 100%; height: auto; mix-blend-mode: multiply; margin-block: 24px; }
+.featured-product { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 20px; border: 1px solid #d5dfcf; background: #ffffffb3; border-radius: 10px; text-decoration: none; }
+.featured-product small { display: block; color: var(--muted); margin-bottom: 8px; font-size: 0.7rem; }
+.featured-product strong { font-size: 1.1rem; }
+.featured-product strong span { margin-left: 16px; font-size: 0.85rem; font-weight: 400; }
+.feature-arrow { display: grid; place-items: center; width: 36px; height: 36px; background: white; border-radius: 50%; }
+.featured-product:hover .feature-arrow { background: var(--accent); color: white; }
+.essentials { padding-top: 32px; border-top: 1px solid var(--line); }
+.section-intro .eyebrow { margin-bottom: 10px; }
+h2 { margin: 0 0 24px; font-size: 1.65rem; letter-spacing: -0.04em; }
+.essential-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.essential-links a { display: flex; align-items: center; gap: 14px; padding: 20px 0; text-decoration: none; border-bottom: 1px solid var(--line); }
+.category-number { color: var(--accent); font-size: 0.7rem; }
+.essential-links strong { display: block; font-size: 0.85rem; }
+.essential-links small { display: block; margin-top: 8px; font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+.essential-links a > span:last-child { margin-left: auto; }
+.essential-links a:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 900px) {
+  .hero { gap: 24px; }
+  .hero-visual { min-height: 380px; padding: 20px; }
+  .essential-links { gap: 14px; }
+}
+@media (max-width: 700px) {
+  .hero { grid-template-columns: 1fr; padding-block: 32px; }
+  .hero-copy { padding-block: 8px 16px; }
+  .hero-description { max-width: 100%; }
+  .hero-visual { min-height: 0; }
+  .essential-links { grid-template-columns: 1fr; gap: 0; }
 }
 
-/* Στυλ για την κεντρική εικόνα της αρχικής. */
-img {
-    /* relative επιτρέπει μικρές μετατοπίσεις σε σχέση με την κανονική θέση του στοιχείου. */
-    position: relative;
-    /* Η εικόνα δεν ξεπερνά ποτέ το πλάτος του γονέα της. */
-    max-width: 100%;
-    /* Ορίζει σχετικό ύψος. */
-    height:50%;
-    /* Στρογγυλεύει τις γωνίες της εικόνας. */
-    border-radius: 12px;
-    /* Βάζει την εικόνα σε πιο πίσω layer από άλλα στοιχεία. */
-    z-index: -10; /*Πάει πίσω layer*/
-}
-
-/* Κουτί περιγραφής κάτω από την κεντρική εικόνα. */
-#home-description {
-    margin: 25px 50px 75px 50px;
-    text-align: justify;
-    padding: 25px 50px;
-    border: 3px solid #b3b3cc;
-    background-color: #b3b3cc;
-    box-shadow: 39px 23px 8px 2px rgba(179, 179, 204, 0.51);
-    border-radius: 12px;
-    color: white;
-}
-
-/* Κοινό στυλ για τα επεξηγηματικά blocks της σελίδας. */
-.explain-page {
-    margin: 25px 50px 75px 50px;
-    padding: 25px 50px;
-    text-align: justify;
-    border: 3px solid #ff8080;
-    background-color: #ff8080;
-    box-shadow: 39px 23px 8px 2px rgba(255, 128, 128, 0.51);
-    border-radius: 12px;
-    color: white;
+@media (max-width: 600px) {
+  .hero { gap: 20px; padding-block: 28px; }
+  h1 { font-size: clamp(2.25rem, 9vw, 3.2rem); }
+  .hero-description { margin: 18px 0 24px; line-height: 1.65; }
+  .hero-copy .button-primary { width: 100%; }
+  .hero-note { margin-top: 20px; line-height: 1.5; }
+  .hero-visual { padding: 16px; }
+  .hero-visual img { margin-block: 16px; }
+  .featured-product { padding: 14px; }
+  .feature-arrow { flex-shrink: 0; }
+  .essential-links strong { font-size: 1rem; line-height: 1.4; }
+  .essential-links small { font-size: 0.875rem; }
 }

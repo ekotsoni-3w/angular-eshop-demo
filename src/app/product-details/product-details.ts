@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // Το CartService χρησιμοποιείται για προσθήκη προϊόντων στο καλάθι.
 import { CartService } from '../cart';
+import { PRODUCTS, Product } from '../product-data';
 
 @Component({
   selector: 'app-product-details',
@@ -13,28 +14,9 @@ import { CartService } from '../cart';
 })
 
 export class ProductDetailsComponent {
-  // Τοπική λίστα προϊόντων από όπου βρίσκουμε το προϊόν που αντιστοιχεί στο id του URL.
-  products = [
-    { id: 1, name: 'Laptop', price: 900, 
-      image: 'assets/images/laptop.jpg', 
-      description: 'Ιδανικό για εργασία, σπουδές και καθημερινή χρήση.'},
-    { id: 2, name: 'Mouse', price: 25, 
-      image: 'assets/images/mouse.jpg',
-      description: 'Εργονομικό ποντίκι με άνετο κράτημα, ιδανικό για πολλές ώρες χρήσης στο γραφείο ή στο σπίτι.'
-    },
-    { id: 3, name: 'Keyboard', price: 60,
-      image: 'assets/images/keyboard.jpg',
-      description: 'Πρακτικό πληκτρολόγιο με άνετα πλήκτρα και μοντέρνο σχεδιασμό για γρήγορη και ξεκούραστη πληκτρολόγηση.'
-     }
-  ];
-
-  // state: αποθηκεύουμε το id που παίρνουμε από το route.
-  productId: string | null = '';
-  // state: εδώ θα κρατήσουμε το προϊόν που βρέθηκε, αν υπάρχει.
-  selectedProduct: 
-    | {id: number; name: string; price:number; image: string; description: string;}
-    | undefined;
-  
+  readonly products = PRODUCTS;
+  productId: string | null = null;
+  selectedProduct: Product | undefined;
 
   // action: παίρνουμε το route και διαβάζουμε το id από το URL.
   constructor(private route: ActivatedRoute,

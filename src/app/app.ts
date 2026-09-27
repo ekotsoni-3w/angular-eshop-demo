@@ -1,7 +1,7 @@
 // Το Component δηλώνει ότι αυτή η κλάση θα χρησιμοποιηθεί σαν Angular component.
 import { Component } from '@angular/core';
 // Το RouterLink φτιάχνει links για navigation και το RouterOutlet δείχνει το component του ενεργού route.
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 // Το CartService κρατά τα δεδομένα του καλαθιού και τις σχετικές ενέργειες.
 import { CartService } from './cart';
 
@@ -9,7 +9,7 @@ import { CartService } from './cart';
   // Το selector είναι το custom HTML tag που αντιστοιχεί σε αυτό το component.
   selector: 'app-root',
   // Επειδή είναι standalone component, δηλώνουμε εδώ όσα Angular features χρειάζεται το template.
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
   // Συνδέει την κλάση με το HTML template.
   templateUrl: './app.html',
   // Συνδέει την κλάση με το CSS του component.

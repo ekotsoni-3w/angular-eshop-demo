@@ -1,0 +1,50 @@
+name: Capture portfolio assets
+
+on:
+  push:
+    branches: [portfolio-upgrade]
+    paths-ignore:
+      - "docs/**"
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Start application
+        run: |
+          npm start -- --host 127.0.0.1 > /tmp/angular-eshop.log 2>&1 &
+          timeout 60 bash -c 'until curl --silent --fail http://127.0.0.1:4200/ > /dev/null; do sleep 1; done'
+
+      - name: Capture screenshots and demo
+        run: |
+          npm run capture:portfolio
+          ffmpeg -y -i docs/demo/angular-eshop-demo.webm \
+            -vf "fps=10,scale=960:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse=dither=bayer" \
+            docs/demo/angular-eshop-demo.gif
+          rm docs/demo/angular-eshop-demo.webm
+
+      - name: Commit generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || git commit -m "docs: refresh portfolio screenshots and demo [skip ci]"
+          git push

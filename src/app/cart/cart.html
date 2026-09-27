@@ -18,15 +18,21 @@
             <!-- Όνομα προϊόντος. -->
             <span class="item-name">{{ item.name }}</span>
             <!-- Ποσότητα του προϊόντος στο καλάθι. -->
-            <span class="item-qty">x{{ item.quantity }}</span>
+            <div class="quantity-controls" role="group" [attr.aria-label]="'Quantity for ' + item.name">
+              <button type="button" class="quantity-btn decrease" (click)="changeQuantity(item.id, -1)"
+                [disabled]="item.quantity <= 1" [attr.aria-label]="'Decrease quantity of ' + item.name">−</button>
+              <span class="item-qty" aria-live="polite" aria-atomic="true">{{ item.quantity }}</span>
+              <button type="button" class="quantity-btn increase" (click)="changeQuantity(item.id, 1)"
+                [disabled]="item.quantity >= maxQuantity" [attr.aria-label]="'Increase quantity of ' + item.name">+</button>
+            </div>
           </div>
 
           <div class="item-actions">
             <!-- Συνολική τιμή για αυτό το προϊόν: τιμή x ποσότητα. -->
             <span class="item-price">{{ item.price * item.quantity }} €</span>
             <!-- Όταν πατηθεί το κουμπί, αφαιρεί το item στη θέση i. -->
-            <button (click)="removeItem(i)" class="remove-btn">
-              <img src="assets/images/delete.png" alt="delete" class="delete-btn" />
+            <button type="button" (click)="removeItem(i)" class="remove-btn" [attr.aria-label]="'Remove ' + item.name + ' from cart'">
+              <img src="assets/images/delete.png" alt="" class="delete-btn" />
             </button>
           </div>
         </li>
@@ -35,11 +41,11 @@
 
     <!-- Εμφανίζει το τελικό σύνολο όλων των προϊόντων. -->
     <div class="receipt-total">
-      <span>Σύνολο</span>
+      <span>Total</span>
       <strong>{{ totalPrice }} €</strong>
     </div>
   } @else {
     <!-- Αν το καλάθι είναι άδειο, εμφανίζει αυτό το μήνυμα. -->
-    <p class="empty-cart">Το καλάθι σου είναι άδειο.</p>
+    <p class="empty-cart">Your cart is empty.</p>
   }
 </div>

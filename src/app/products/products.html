@@ -1,19 +1,49 @@
-<!-- Τίτλος της σελίδας προϊόντων. -->
-<h1>Products</h1>
-
-<ul>
-  <!-- Το @for επαναλαμβάνει το li για κάθε προϊόν της λίστας products. -->
-  @for (product of products; track product.id) {
-    <li class="card-product">
-      <!-- Property binding: το [src] παίρνει την τιμή από το πεδίο image του προϊόντος. -->
-      <img [src]="product.image" alt="{{product.name}}">
-      <!-- Interpolation: εμφανίζει δυναμικά το όνομα και την τιμή. -->
-      <p>{{ product.name }} - {{ product.price }} €</p>
-      <!-- Το routerLink δημιουργεί link προς το route /products/:id. -->
-      <a [routerLink]="['/products', product.id]">Details</a>
-      <br>
-      <!-- Event binding: όταν γίνει click, καλείται η addToCart(product). -->
-      <button (click)="addToCart(product)" class="add-product">Προσθήκη στο καλάθι</button>
-    </li>
-  }
-</ul>
+<section class="catalogue page-width" aria-labelledby="products-title">
+  <header class="catalogue-heading">
+    <div><p class="eyebrow">The everyday collection</p><h1 id="products-title">Small upgrades. Big possibilities.</h1><p class="catalogue-description">Find the essentials that make your everyday setup work for you.</p></div>
+  </header>
+  <div class="catalogue-filters" role="search" aria-label="Find products">
+    <label class="search-field" for="product-search">
+      <span>Search products</span>
+      <input id="product-search" #searchInput type="search" placeholder="Search by name, description or category"
+        [value]="searchQuery()" (input)="searchQuery.set(searchInput.value)" aria-controls="product-results">
+    </label>
+    <fieldset class="category-filters">
+      <legend>Category</legend>
+      <div class="category-options">
+        <button type="button" [attr.aria-pressed]="selectedCategory() === ''" (click)="selectedCategory.set('')" aria-controls="product-results">All products</button>
+        @for (category of categories; track category) {
+          <button type="button" [attr.aria-pressed]="selectedCategory() === category" (click)="selectedCategory.set(category)" aria-controls="product-results">{{ category }}</button>
+        }
+      </div>
+    </fieldset>
+    <div class="results-summary">
+      <p class="product-count" role="status" aria-live="polite" aria-atomic="true">{{ filteredProducts().length }} {{ filteredProducts().length === 1 ? 'product' : 'products' }} found</p>
+      <button type="button" class="clear-filters" [disabled]="!hasFilters()" (click)="clearFilters()">Clear filters</button>
+    </div>
+  </div>
+  <ul class="product-grid" id="product-results">
+    @for (product of filteredProducts(); track product.id) {
+      <li class="card-product">
+        <a class="product-image" [routerLink]="['/products', product.id]" [attr.aria-label]="'View ' + product.name">
+          <img [src]="product.image" [alt]="product.name" width="400" height="300" loading="lazy">
+          <span class="image-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="product-content">
+          <p class="product-category">{{ product.category }}</p>
+          <div class="product-title"><h2><a [routerLink]="['/products', product.id]">{{ product.name }}</a></h2><span class="price">€{{ product.price }}</span></div>
+          <p class="product-description">{{ product.description }}</p>
+          <div class="card-actions">
+            <a class="details-link" [routerLink]="['/products', product.id]" [attr.aria-label]="'View details for ' + product.name">View details <span aria-hidden="true">↗</span></a>
+            <button type="button" (click)="addToCart(product)" class="button-primary" [attr.aria-label]="'Add ' + product.name + ' to cart'"><span aria-hidden="true">+</span> Add to cart</button>
+          </div>
+        </div>
+      </li>
+    } @empty {
+      <li class="empty-results">
+        <h2>No products found</h2>
+        <p>Try a different search or clear your filters to explore all products.</p>
+      </li>
+    }
+  </ul>
+</section>

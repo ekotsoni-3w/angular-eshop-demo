@@ -1,75 +1,40 @@
-/* Το box-sizing: border-box βοηθάει ώστε padding και border να υπολογίζονται μέσα στο συνολικό πλάτος. */
-* {
-  box-sizing: border-box;
-}
-
-/* Στυλ για τον τίτλο της σελίδας. */
-h1 {
-    font-family: fantasy;
-    margin: 20px;
-}
-
-/* Το ul γίνεται grid ώστε τα προϊόντα να εμφανίζονται σαν cards. */
-ul {
-    list-style-type: none;
-    padding: 0;
-    /*margin: 30px 0;*/
-    display: grid; 
-    /* Δημιουργεί responsive στήλες που προσαρμόζονται στον διαθέσιμο χώρο. */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Κάρτα κάθε προϊόντος. */
-.card-product {
-    margin: 20px auto;
-    padding: 20px;
-    border: 5px solid rgb(129,157,202);
-    box-shadow: -12px -11px 4px -3px rgba(129, 157, 202, 0.78);
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-}
-
-/* Εικόνα προϊόντος μέσα στην κάρτα. */
-.card-product img {
-    width: 100%;
-    max-width: 220px;
-    height: 180px;
-    /* Κάνει την εικόνα να γεμίσει το πλαίσιο με βάση τις διαστάσεις που ορίσαμε. */
-    object-fit:fill;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-/* Μικρή κίνηση zoom όταν περνάει ο δείκτης πάνω από την εικόνα. */
-.card-product img:hover {
-    transform: scale(1.08);
-}
-
-/* Στυλ για το link των details. */
-.card-product a {
-  display: inline-block;
-  margin-bottom: 12px;
-  text-decoration: none;
-  color: #2a5db0;
-  font-weight: bold;
-}
-
-/* Στυλ για το κουμπί προσθήκης στο καλάθι. */
-.add-product {
-    display: inline-block;
-    border: none;
-    background-color: rgb(129, 157, 202);
-    padding: 10px 14px;
-    box-shadow: -8px -8px 4px -2px rgba(129, 157, 202, 0.78);
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-weight: 600;
-}
-
-/* Hover effect για το κουμπί. */
-.add-product:hover {
-    transform: scale(1.08);
+.catalogue { padding-top: 52px; }
+.catalogue-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 36px; }
+h1 { max-width: 650px; margin: 0; font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.05em; line-height: 1.12; }
+.catalogue-description { margin: 18px 0 0; color: var(--muted); line-height: 1.7; }
+.product-count { flex-shrink: 0; padding-block: 6px; color: var(--muted); font-size: 0.8rem; }
+.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; margin: 0; }
+.card-product { overflow: hidden; min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; background: white; transition: box-shadow 180ms ease, border-color 180ms ease; }
+.card-product:hover { border-color: #a8bcae; box-shadow: 0 10px 28px #182d2a0c; }
+.product-image { position: relative; display: grid; place-items: center; padding: 24px; aspect-ratio: 4 / 3; background: #edf0e9; }
+.card-product:nth-child(3n + 2) .product-image { background: #eef0f2; }
+.card-product:nth-child(3n) .product-image { background: #f3eee7; }
+.product-image img { width: 100%; height: 100%; min-height: 0; object-fit: contain; mix-blend-mode: multiply; transition: transform 180ms ease; }
+.product-image:hover img { transform: scale(1.04); }
+.image-arrow { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: white; }
+.product-content { display: flex; flex-direction: column; flex: 1; padding: 24px; }
+.product-category { margin: 0 0 12px; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.product-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+h2 { margin: 0; font-size: 1.4rem; letter-spacing: -0.035em; }
+h2 a { text-decoration: none; }
+h2 a:hover { color: var(--accent); }
+.price { flex-shrink: 0; font-size: 1rem; font-weight: 600; }
+.product-description { flex: 1; margin: 14px 0 24px; color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+.card-actions { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--line); }
+.details-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 0.75rem; text-underline-offset: 4px; }
+.card-actions .button-primary { padding: 12px 14px; gap: 8px; font-size: 0.75rem; }
+@media (max-width: 1000px) { .product-grid { gap: 16px; } .product-content { padding: 18px; } }
+@media (max-width: 800px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 550px) {
+  .catalogue { padding-top: 32px; }
+  .catalogue-heading { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+  .product-grid { grid-template-columns: 1fr; gap: 24px; }
+  .product-content { padding: 20px; }
+  .product-image { aspect-ratio: 3 / 2; padding: 16px; }
+  .product-description { font-size: 0.95rem; margin-bottom: 18px; }
+  .product-title h2 { min-width: 0; overflow-wrap: anywhere; }
+  .card-actions { display: grid; grid-template-columns: 1fr; gap: 4px; }
+  .card-actions .button-primary { grid-row: 1; font-size: 0.95rem; min-height: 48px; }
+  .details-link { justify-content: center; font-size: 0.875rem; }
+  .product-category { font-size: 0.75rem; }
 }
