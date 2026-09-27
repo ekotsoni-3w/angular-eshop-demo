@@ -28,6 +28,11 @@ jobs:
       - name: Install browser
         run: npx playwright install --with-deps chromium
 
+      - name: Install video tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+
       - name: Start application
         run: |
           npm start -- --host 127.0.0.1 > /tmp/angular-eshop.log 2>&1 &
